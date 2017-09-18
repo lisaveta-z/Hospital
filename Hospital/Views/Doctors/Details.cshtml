@@ -1,0 +1,76 @@
+﻿@model Hospital.Models.Doctor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Подробности</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Специальность
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Speciality.SpecialityName)
+        </dd>
+
+        <dt>
+            Имя
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            Фамилия
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.DoctorId }) |
+    @Html.ActionLink("Назад к списку", "Index")
+</p>
+
+<h3>Список приёмов</h3>
+
+<table class="table">
+    <tr>
+        <th>Дата</th>
+        <th>Имя пациента</th>
+        <th>Фамилия пациента</th>
+        <th>Предписание врача</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Visits)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorPrescription)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

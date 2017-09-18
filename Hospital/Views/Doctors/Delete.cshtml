@@ -1,0 +1,37 @@
+﻿@model Hospital.Models.Doctor
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы уверены, что хотите удалить этого врача?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Cпециальность</dt>
+
+        <dd>@Html.DisplayFor(model => model.Speciality.SpecialityName)</dd>
+
+        <dt>Имя</dt>
+
+        <dd>@Html.DisplayFor(model => model.FirstName)</dd>
+
+        <dt>Фамилия</dt>
+
+        <dd>@Html.DisplayFor(model => model.LastName)</dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку", "Index")
+        </div>
+    }
+</div>
